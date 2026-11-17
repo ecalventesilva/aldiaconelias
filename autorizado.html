@@ -1,0 +1,14 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex"><title>Autorización · Al Día con ElIAs</title><link rel="stylesheet" href="estilo.css">
+<style>.cod{font:700 20px monospace;background:#1E2733;border:3px solid var(--am);border-radius:12px;padding:16px;word-break:break-all;margin:18px 0}button{background:var(--am);border:0;border-radius:10px;padding:12px 22px;font:800 18px Inter,sans-serif;cursor:pointer}</style></head><body>
+<header><a href="./">Al Día con El<em>IA</em>s</a></header>
+<main><h1 id="t">Autorización</h1><p id="m"></p><div class="cod" id="c" hidden></div><button id="b" hidden>Copiar código</button>
+<p class="fecha">Esta página solo muestra el código que Google devuelve tras autorizar la herramienta interna de publicación del canal. No guarda ni envía nada.</p></main>
+<script>
+const q = new URLSearchParams(location.search), c = q.get("code"), e = q.get("error");
+if(c){ document.getElementById("t").textContent = "✅ Autorizado";
+  document.getElementById("m").textContent = "Copia este código y pégalo en el proceso «Autorizar YouTube (web)» de GitHub (campo «codigo»). Caduca en unos minutos y solo sirve una vez.";
+  const d = document.getElementById("c"); d.hidden = false; d.textContent = c;
+  const b = document.getElementById("b"); b.hidden = false; b.onclick = () => navigator.clipboard.writeText(c).then(() => b.textContent = "Copiado ✓"); }
+else document.getElementById("m").textContent = e ? "No se ha autorizado: " + e : "No hay ningún código en esta dirección.";
+</script></body></html>
